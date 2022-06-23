@@ -8,8 +8,8 @@
         {
             "type": "dart",
             "request": "launch",
-            "name": "Open pyramid.html",
-            "program": "web/marry-age.html"
+            "name": "Dart & Flutter",
+            "program": "web/pyramid.html"
         }
     ]
 }
