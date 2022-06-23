@@ -9,7 +9,7 @@
             "type": "dart",
             "request": "launch",
             "name": "Open pyramid.html",
-            "program": "web\\marry-age.html"
+            "program": "web/marry-age.html"
         }
     ]
 }
