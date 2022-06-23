@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="chart-name" content="某国女性结婚年龄走势">
+    <title>F2 图表组件库 - AntV</title>
+    <link rel="stylesheet" href="https://gw.alipayobjects.com/os/rmsportal/YmDAMEQVbLJpVbKiRQVX.css" />
+    
+</head>
+<body>
+<script>/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;</script>
+
+<script src="https://gw.alipayobjects.com/os/antv/assets/f2/3.4.2/f2.min.js"></script>
+
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js"></script>
+<!-- 在 PC 上模拟 touch 事件 -->
+<script src="https://gw.alipayobjects.com/os/rmsportal/NjNldKHIVQRozfbAOJUW.js"></script>
+
+  <div class="chart-wrapper">
+    <canvas id="mountNode"></canvas>
+  </div>
+  <script>
+  var data = [{
+    year: 2000,
+    age: 27.2
+  }, {
+    year: 2001,
+    age: 27.5
+  }, {
+    year: 2002,
+    age: 27.8
+  }, {
+    year: 2003,
+    age: 28
+  }, {
+    year: 2004,
+    age: 28.2
+  }, {
+    year: 2005,
+    age: 28.4
+  }, {
+    year: 2006,
+    age: 28.8
+  }, {
+    year: 2007,
+    age: 28.8
+  }, {
+    year: 2008,
+    age: 28.8
+  }, {
+    year: 2009,
+    age: 28.8
+  }, {
+    year: 2010,
+    age: 28.9
+  }, {
+    year: 2011,
+    age: 29
+  }, {
+    year: 2012,
+    age: 29.3
+  }, {
+    year: 2013,
+    age: 29.4
+  }, {
+    year: 2014,
+    age: 29.5
+  }, {
+    year: 2015,
+    age: 29.7
+  }, {
+    year: 2016,
+    age: 30
+  }, {
+    year: 2017,
+    age: 30.12
+  }];
+  var chart = new F2.Chart({
+    id: 'mountNode',
+    pixelRatio: window.devicePixelRatio
+  });
+  var defs = {
+    year: {
+      range: [0, 1],
+      max: 2020
+    },
+    age: {
+      tickCount: 5
+    }
+  };
+  chart.axis('year', {
+    label: function label(text, index, total) {
+      var cfg = {
+        textAlign: 'center'
+      };
+      if (index === 0) {
+        cfg.textAlign = 'start';
+      }
+      if (index > 0 && index === total - 1) {
+        cfg.textAlign = 'end';
+      }
+      return cfg;
+    }
+  });
+  chart.source(data, defs);
+  chart.tooltip({
+    showCrosshairs: true
+  });
+  chart.guide().tag({
+    position: [2017, 30.12],
+    content: '30.12',
+    direct: 'tl',
+    offsetY: -5,
+    background: {
+      fill: '#8659AF'
+    },
+    pointStyle: {
+      fill: '#8659AF'
+    }
+  });
+  chart.line().position('year*age').shape('smooth').color('l(0) 0:#F2C587 0.5:#ED7973 1:#8659AF');
+  chart.area().position('year*age').shape('smooth').color('l(0) 0:#F2C587 0.5:#ED7973 1:#8659AF');
+  chart.render();
+</script>
+
+
+</body>
+</html>
